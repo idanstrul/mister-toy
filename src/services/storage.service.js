@@ -14,12 +14,13 @@ function query(entityType) {
 
 function get(entityType, entityId) {
   return query(entityType).then((entities) =>
-    entities.find((entity) => entity.id === entityId)
+    entities.find((entity) => entity._id === entityId)
   )
 }
 
 function post(entityType, newEntity) {
   newEntity.id = _makeId()
+  newEntity.createdAt = Date.now()
   return query(entityType).then((entities) => {
     entities.push(newEntity)
     _save(entityType, entities)
