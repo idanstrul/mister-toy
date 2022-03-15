@@ -1,15 +1,15 @@
 <template>
-  <section class="about">
-    <h1>About page!</h1>
+  <section class="app-footer">
+      <h1>I'm a footer</h1>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'about'
-
+    name: 'app-footer'
 }
 </script>
 
 <style>
+
 </style>

@@ -2,14 +2,26 @@ import { toyService } from "../../services/toy.service.js";
 
 export const toyStore = {
     state: {
-        toys: []
+        toys: [],
+        filterBy: {
+            name: '',
+            inStock: null,
+            labels: [],
+            sortBy: ''
+        },
     },
     getters: {
-        toys(state) {
+        filterBy(state) {
+            return state.filterBy
+        },
+        toysForDisplay(state) {
             return state.toys
-        }
+        },
     },
     mutations: {
+        setFilterBy(state, {filterBy}){
+            state.filterBy = filterBy
+        },
         loadToys(state, { toys }) {
             state.toys = toys
         },
@@ -25,9 +37,13 @@ export const toyStore = {
         }
     },
     actions: {
+        setFilterBy(context, {filterBy}){
+            context.commit({type: 'setFilterBy', filterBy})
+            context.dispatch('loadToys')
+        },
         loadToys(context) {
             context.commit({ type: 'setIsLoading', loadingStatus: true })
-            return toyService.query()
+            return toyService.query(context.getters.filterBy)
                 .then(toys => {
                     context.commit({ type: 'loadToys', toys })
                     return toys
@@ -41,7 +57,7 @@ export const toyStore = {
                     context.commit({ type: 'setIsLoading', loadingStatus: false })
                 })
         },
-        getById(context, {toyId}){
+        getById(context, { toyId }) {
             context.commit({ type: 'setIsLoading', loadingStatus: true })
             return toyService.getById(toyId)
                 .catch(err => {
@@ -82,10 +98,10 @@ export const toyStore = {
                     context.commit({ type: 'setIsLoading', loadingStatus: false })
                 })
         },
-        getEmptyToy(context){
+        getEmptyToy(context) {
             context.commit({ type: 'setIsLoading', loadingStatus: true })
             return toyService.getEmptyToy()
-                .catch(err =>{
+                .catch(err => {
                     console.error(`Cannot get empty toy: `, err)
                     context.dispatch({ type: 'flashUserMsg', msg: `Oops! Cannot make new toy...`, style: 'warning' })
                 })
@@ -95,3 +111,5 @@ export const toyStore = {
         }
     }
 }
+
+

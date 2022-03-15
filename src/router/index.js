@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import home from "../views/home.vue";
 import about from "../views/about.vue"
+import toyApp from "../views/toy-app.cmp.vue"
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -14,6 +15,12 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: about
+    },
+    {
+      path: '/toy',
+      name: 'toy-app',
+      component: toyApp
+
     }
   ]
 })

@@ -1,15 +1,17 @@
 <template>
-  <section class="about">
-    <h1>About page!</h1>
+  <section class="toy-preview">
+      <h1>Toy preview!</h1>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'about'
+    name: 'toy-preview',
+
 
 }
 </script>
 
 <style>
+
 </style>

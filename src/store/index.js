@@ -5,10 +5,6 @@ const store = createStore({
     strict: true,
     state: {
         isLoading: false,
-        filterBy: {
-            txt: '',
-            status: 'all'
-        }, 
         userMsg: {
             msg: '',
             style: '',
@@ -18,9 +14,6 @@ const store = createStore({
     getters: {
         isLoading(state){
             return state.isLoading
-        },
-        filterBy(state){
-            return state.filterBy
         },
         userMsg(state){
             return state.userMsg
