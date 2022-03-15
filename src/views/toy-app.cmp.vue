@@ -2,8 +2,8 @@
   <section class="toy-app">
       <h1>Toy app!</h1>
       <toy-filter @changed-filter="filterToys"></toy-filter>
-      <toy-list></toy-list>
-      <pre>{{toysForDisplay}}</pre>
+      <toy-list :toys="toysForDisplay"></toy-list>
+      <!-- <pre>{{toysForDisplay}}</pre> -->
   </section>
 </template>
 

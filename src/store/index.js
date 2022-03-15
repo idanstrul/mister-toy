@@ -13,7 +13,7 @@ const store = createStore({
     },
     getters: {
         isLoading(state){
-            return state.isLoading
+            return JSON.parse(JSON.stringify(state.isLoading))
         },
         userMsg(state){
             return state.userMsg

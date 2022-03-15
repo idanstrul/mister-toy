@@ -1,7 +1,10 @@
 <template>
   <section class="app">
     <app-header></app-header>
-    <router-view />
+    <div>
+      <router-view /> 
+      <img v-if="isLoading" src="./assets/loading.gif" alt="Loading...">
+    </div>
     <app-footer></app-footer>
   </section>
 </template>
@@ -17,8 +20,13 @@ export default {
       msg: 'hellooooo'
     }
   },
-  created(){
+  created() {
     this.$store.dispatch('loadToys')
+  },
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading
+    }
   },
   components: {
     appFooter,
