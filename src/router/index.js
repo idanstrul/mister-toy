@@ -24,7 +24,7 @@ const router = createRouter({
       component: toyApp
     },
     {
-      path: '/toy/details/:toyId',
+      path: '/toy/:toyId',
       name: 'toy-details',
       component: toyDetails
     },
