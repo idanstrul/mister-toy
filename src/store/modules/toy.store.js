@@ -12,10 +12,10 @@ export const toyStore = {
     },
     getters: {
         filterBy(state) {
-            return state.filterBy
+            return JSON.parse(JSON.stringify(state.filterBy))
         },
         toysForDisplay(state) {
-            return state.toys
+            return JSON.parse(JSON.stringify(state.toys))
         },
     },
     mutations: {
