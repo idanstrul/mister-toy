@@ -1,4 +1,4 @@
-import { storageService } from './async-storage.service'
+// import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -48,7 +48,7 @@ async function login(userCred) {
     // const users = await storageService.query('user')
     // const user = users.find(user => user.username === userCred.username)
     // return _saveLocalUser(user)
-
+    delete userCred.fullName
     const user = await httpService.post('auth/login', userCred)
     // socketService.emit('set-user-socket', user._id);
     if (user) return _saveLocalUser(user)

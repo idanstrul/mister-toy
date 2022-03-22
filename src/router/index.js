@@ -4,6 +4,7 @@ import about from "../views/about.vue"
 import toyApp from "../views/toy-app.cmp.vue"
 import toyDetails from "../views/toy-details.cmp.vue"
 import toyEdit from "../views/toy-edit.cmp.vue"
+import loginSignup from "../views/login-signup.cmp.vue"
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/toy/edit/:toyId?',
       name: 'toy-edit',
       component: toyEdit
+    },
+    {
+      path: '/login',
+      name: 'loginSignup',
+      component: loginSignup
     }
   ]
 })
